@@ -1,0 +1,15 @@
+name: HypixelEnchantGames
+version: 1.0.6
+main: com.example.enchantgames.HypixelEnchantGamesPlugin
+api-version: "1.21"
+depend: [AuraSkills]
+commands:
+  enchantgames:
+    description: Open the enchanting minigames selector
+    usage: "/enchantgames"
+    aliases: [egames, enchantminigames]
+permissions:
+  enchantgames.open:
+    default: true
+  enchantgames.admin:
+    default: op

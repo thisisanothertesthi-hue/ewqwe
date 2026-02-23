@@ -1,0 +1,134 @@
+# HypixelEnchantGames - Enchanting minigames inspired by Hypixel SkyBlock
+# Paper 1.21.1
+
+settings:
+  open_on_enchanting_table: true
+  # Prevents clicking items out of the GUIs
+  lock_inventories: true
+
+sounds:
+  ui_open: "minecraft:block_enchantment_table_use"
+  ui_click: "minecraft:ui.button.click"
+  superpairs_reveal: "minecraft:block_amethyst_block_hit"
+  superpairs_match: "minecraft:block_note_block_chime"
+  superpairs_mismatch: "minecraft:block_note_block_bass"
+  superpairs_complete: "minecraft:ui.toast.challenge_complete"
+  sequencer_show: "minecraft:block_note_block_pling"
+  sequencer_click_good: "minecraft:block_note_block_bit"
+  sequencer_click_bad: "minecraft:block_note_block_bass"
+  sequencer_complete: "minecraft:ui.toast.challenge_complete"
+  chronomatron_show: "minecraft:block_note_block_pling"
+  chronomatron_click_good: "minecraft:block_note_block_bit"
+  chronomatron_click_bad: "minecraft:block_note_block_bass"
+  chronomatron_complete: "minecraft:ui.toast.challenge_complete"
+
+# AuraSkills enchanting XP rewards.
+# These values are raw AuraSkills skill XP (not vanilla XP).
+rewards:
+  superpairs:
+    # Extra XP when the whole board is completed (in addition to per-pair rewards)
+    completion_xp: 0
+    completion_commands: []
+    # Default reward pool (you can edit/disable entries).
+    # Each matched pair gives the entry's xp + runs commands.
+    # Commands support placeholders:
+    #  {player} = player name
+    #  {uuid} = player uuid
+    default_pool:
+      - id: "dye_10k"
+        weight: 2
+        item:
+          material: "LIME_DYE"
+          name: "&a+10,000 Enchanting XP"
+          lore:
+            - "&7A rare find."
+        xp: 10000
+        commands: []
+      - id: "dye_5k"
+        weight: 3
+        item:
+          material: "PINK_DYE"
+          name: "&d+5,000 Enchanting XP"
+          lore:
+            - "&7An uncommon find."
+        xp: 5000
+        commands: []
+      - id: "dye_1k"
+        weight: 8
+        item:
+          material: "LIGHT_BLUE_DYE"
+          name: "&b+1,000 Enchanting XP"
+          lore:
+            - "&7A decent find."
+        xp: 1000
+        commands: []
+      - id: "dye_250"
+        weight: 16
+        item:
+          material: "YELLOW_DYE"
+          name: "&e+250 Enchanting XP"
+          lore:
+            - "&7A common find."
+        xp: 250
+        commands: []
+      - id: "dye_100"
+        weight: 24
+        item:
+          material: "WHITE_DYE"
+          name: "&f+100 Enchanting XP"
+          lore:
+            - "&7A small bonus."
+        xp: 100
+        commands: []
+    custom_pool:
+ []
+
+  ultrasequencer:
+    # Awarded when the player completes the whole game (all rounds)
+    completion_xp: 2500
+    completion_commands: []
+    # Per-round XP (optional)
+    per_round_xp: 150
+
+  chronomatron:
+    completion_xp: 2500
+    completion_commands: []
+    per_round_xp: 150
+
+minigames:
+  superpairs:
+    enabled: true
+    # Board size: rows*9. Keep rows between 3 and 6.
+    rows: 6
+    # Delay before flipping mismatched cards back (ticks)
+    mismatch_flip_delay_ticks: 18
+
+  ultrasequencer:
+    enabled: true
+    # Number of rounds
+    rounds: 7
+    # Starting sequence length
+    start_length: 3
+    # How many to add each round
+    add_per_round: 1
+    # Speed of showing sequence (ticks between highlights)
+    show_interval_ticks: 8
+
+  chronomatron:
+    enabled: true
+    rounds: 7
+    start_length: 3
+    add_per_round: 1
+    show_interval_ticks: 8
+    # How long player has to input after sequence shown (ticks). 20 ticks = 1s.
+    input_time_limit_ticks: 400
+
+messages:
+  superpairs_complete: "&dSuperpairs &7completed! &a+{xp} Enchanting XP"
+  sequencer_complete: "&aUltrasequencer &7completed! &a+{xp} Enchanting XP"
+  chronomatron_complete: "&bChronomatron &7completed! &a+{xp} Enchanting XP"
+
+tries:
+  max_per_24h: 3
+  window_hours: 24
+  no_tries_left: "&cYou have no minigame attempts left. Try again in &e{time_left}&c."
